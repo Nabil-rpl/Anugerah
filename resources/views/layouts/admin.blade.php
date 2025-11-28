@@ -365,9 +365,10 @@
 
         <nav class="sidebar-nav">
             <div class="nav-section-title">GENERAL</div>
-            
+
             <div class="nav-item">
-                <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                <a href="{{ route('admin.dashboard') }}"
+                    class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <i class="fas fa-home"></i>
                     <span class="nav-text">Beranda</span>
                 </a>
@@ -376,21 +377,24 @@
             <div class="nav-section-title">MASTER DATA</div>
 
             <div class="nav-item">
-                <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.users.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
                     <i class="fas fa-users"></i>
                     <span class="nav-text">Users</span>
                 </a>
             </div>
 
             <div class="nav-item">
-                <a href="{{ route('admin.pengunjung.index') }}" class="nav-link {{ request()->routeIs('admin.pengunjung.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.pengunjung.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.pengunjung.*') ? 'active' : '' }}">
                     <i class="fas fa-user-check"></i>
                     <span class="nav-text">Pengunjung</span>
                 </a>
             </div>
 
             <div class="nav-item">
-                <a href="{{ route('admin.client.index') }}" class="nav-link {{ request()->routeIs('admin.client.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.client.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.client.*') ? 'active' : '' }}">
                     <i class="fas fa-user-tie"></i>
                     <span class="nav-text">Master Client</span>
                 </a>
@@ -399,44 +403,82 @@
             <div class="nav-section-title">CONTENT</div>
 
             <div class="nav-item">
-                <a href="{{ route('admin.berita.index') }}" class="nav-link {{ request()->routeIs('admin.berita.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.berita.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.berita.*') ? 'active' : '' }}">
                     <i class="fas fa-newspaper"></i>
                     <span class="nav-text">Berita</span>
                 </a>
             </div>
 
             <div class="nav-item">
-                <a href="{{ route('admin.slider.index') }}" class="nav-link {{ request()->routeIs('admin.slider.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.slider.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.slider.*') ? 'active' : '' }}">
                     <i class="fas fa-images"></i>
                     <span class="nav-text">Slider</span>
                 </a>
             </div>
 
             <div class="nav-item">
-                <a href="{{ route('admin.logo-client.index') }}" class="nav-link {{ request()->routeIs('admin.logo-client.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.logo-client.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.logo-client.*') ? 'active' : '' }}">
                     <i class="fas fa-image"></i>
                     <span class="nav-text">Logo Client</span>
                 </a>
             </div>
 
             <div class="nav-item">
-                <a href="{{ route('admin.layanan-client.index') }}" class="nav-link {{ request()->routeIs('admin.layanan-client.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.layanan-client.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.layanan-client.*') ? 'active' : '' }}">
                     <i class="fas fa-briefcase"></i>
                     <span class="nav-text">Layanan Client</span>
                 </a>
             </div>
 
             <div class="nav-item">
-                <a href="{{ route('admin.jenis-layanan.index') }}" class="nav-link {{ request()->routeIs('admin.jenis-layanan.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.jenis-layanan.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.jenis-layanan.*') ? 'active' : '' }}">
                     <i class="fas fa-briefcase"></i>
                     <span class="nav-text">Jenis Layanan</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
+                <a href="{{ route('admin.kategori-alat.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.kategori_alat.*') ? 'active' : '' }}">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="nav-text">Kategori Alat</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
+                <a href="{{ route('admin.alat.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.alat.*') ? 'active' : '' }}">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="nav-text">Alat</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
+                <a href="{{ route('admin.satuan.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.satuan.*') ? 'active' : '' }}">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="nav-text">Satuan</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
+                <a href="{{ route('admin.hama.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.hama.*') ? 'active' : '' }}">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="nav-text">Hama</span>
                 </a>
             </div>
 
             <div class="nav-section-title">SYSTEM</div>
 
             <div class="nav-item">
-                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    class="nav-link">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="nav-text">Logout</span>
                 </a>
@@ -468,9 +510,12 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a></li>
                         <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
                         <li>
-                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form-top').submit();">
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"
+                                onclick="event.preventDefault(); document.getElementById('logout-form-top').submit();">
                                 <i class="fas fa-sign-out-alt me-2"></i> Logout
                             </a>
                         </li>
@@ -496,13 +541,13 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
         // Mobile sidebar toggle
         function toggleMobileSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('mobileOverlay');
-            
+
             sidebar.classList.toggle('mobile-show');
             overlay.classList.toggle('active');
         }

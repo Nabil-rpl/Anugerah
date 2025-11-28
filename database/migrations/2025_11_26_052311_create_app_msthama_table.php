@@ -6,21 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('app_msthama', function (Blueprint $table) {
             $table->integer('id_hama', true);
-            $table->string('nama_hama', 50)->nullable();
-            $table->integer('id_sublayanan')->nullable();
+            $table->string('nama_hama', 50);
+            $table->tinyInteger('id_sublayanan')->nullable(); // Ubah ke tinyInteger
+            
+            // Tambah index
+            $table->index('id_sublayanan');
+            
+            // Tambah foreign key
+            $table->foreign('id_sublayanan')
+                  ->references('id_sublayanan')
+                  ->on('app_mstsublayanan')
+                  ->onDelete('set null')
+                  ->onUpdate('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('app_msthama');
