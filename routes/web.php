@@ -10,6 +10,10 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\LogoClientController;
 use App\Http\Controllers\Admin\LayananClientController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\KategoriAlatController;
+use App\Http\Controllers\Admin\AlatController;
+use App\Http\Controllers\Admin\SatuanController;
+use App\Http\Controllers\Admin\HamaController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -77,6 +81,17 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     
     // Master Client Management
     Route::resource('client', ClientController::class);
+    
+    // Kategori Alat Management (Master Data)
+    Route::resource('kategori-alat', KategoriAlatController::class);
+
+    // Alat Management
+    Route::resource('alat', AlatController::class);
+    
+    // Satuan Management (Master Data)
+    Route::resource('satuan', SatuanController::class);
+
+    Route::resource('hama', HamaController::class);
     
 });
 
