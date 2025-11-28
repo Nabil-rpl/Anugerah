@@ -20,55 +20,59 @@ class AuthController extends Controller
      * Proses login
      */
     public function login(Request $request)
-{
-    $request->validate([
-        'email'    => 'required|email',
-        'password' => 'required',
-    ]);
+    {
+        $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required',
+        ]);
 
-    if (Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::attempt($request->only('email', 'password'))) {
 
-        $request->session()->regenerate();
+            $request->session()->regenerate();
 
-        // Arahkan berdasarkan role
-        $user = Auth::user();
+            // Arahkan berdasarkan role
+            $user = Auth::user();
 
-        if ($user->role === 'admin') {
-            return redirect()->route('dashboard.admin');
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard'); // ⬅️ Update ini
+            }
+
+            if ($user->role === 'user') {
+                return redirect()->route('user.dashboard'); // ⬅️ Update ini
+            }
+
+            // default jika role tidak dikenali
+            return redirect()->route('dashboard');
         }
 
-        if ($user->role === 'user') {
-            return redirect()->route('dashboard.user');
-        }
-
-        // default jika role tidak dikenali
-        return redirect()->route('dashboard');
+        return back()->withErrors([
+            'email' => 'Email atau password salah.',
+        ])->withInput();
     }
 
-    return back()->withErrors([
-        'email' => 'Email atau password salah.',
-    ])->withInput();
-}
-
-
     /**
-     * Dashboard setelah login
+     * Dashboard umum
      */
     public function dashboard()
     {
         return view('admin.dashboard');
     }
 
+    /**
+     * Dashboard ADMIN
+     */
     public function adminDashboard()
     {
-        return view('dashboard.admin');
+        return view('admin.dashboard');
     }
 
+    /**
+     * Dashboard USER
+     */
     public function userDashboard()
     {
-        return view('dashboard.user');
+        return view('user.dashboard');
     }
-
 
     /**
      * Logout user
@@ -81,7 +85,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        // Karena login page kamu ada di route '/'
         return redirect()->route('login');
     }
 }
