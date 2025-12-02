@@ -23,20 +23,19 @@ class SubLayanan extends Model
         'nama_sublayanan' => 'string',
     ];
 
-    // COMMENT DULU JIKA TABEL LAYANAN BELUM ADA
-    // /**
-    //  * Get the layanan that owns the sublayanan.
-    //  */
-    // public function layanan()
-    // {
-    //     return $this->belongsTo(Layanan::class, 'id_layanan', 'id_layanan');
-    // }
-
     /**
      * Get the hama for the sublayanan.
      */
     public function hama()
     {
         return $this->hasMany(Hama::class, 'id_sublayanan', 'id_sublayanan');
+    }
+    
+    /**
+     * Get the jenis layanan that owns the sublayanan.
+     */
+    public function jenisLayanan()
+    {
+        return $this->belongsTo(JenisLayanan::class, 'id_layanan', 'id_jenislayanan');
     }
 }

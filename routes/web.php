@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PengunjungController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\JenisLayananController;
+use App\Http\Controllers\Admin\SubLayananController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\LogoClientController;
 use App\Http\Controllers\Admin\LayananClientController;
@@ -14,6 +15,10 @@ use App\Http\Controllers\Admin\KategoriAlatController;
 use App\Http\Controllers\Admin\AlatController;
 use App\Http\Controllers\Admin\SatuanController;
 use App\Http\Controllers\Admin\HamaController;
+use App\Http\Controllers\Admin\ProvinsiController;
+use App\Http\Controllers\Admin\KotaController;
+use App\Http\Controllers\Admin\KecamatanController;
+use App\Http\Controllers\Admin\KelurahanController; // ← TAMBAHKAN INI
 use Illuminate\Support\Facades\Auth;
 
 
@@ -69,6 +74,27 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::post('/jenis-layanan', [JenisLayananController::class, 'store'])->name('jenis-layanan.store');
     Route::put('/jenis-layanan/{id}', [JenisLayananController::class, 'update'])->name('jenis-layanan.update');
     Route::delete('/jenis-layanan/{id}', [JenisLayananController::class, 'destroy'])->name('jenis-layanan.destroy');
+
+    // Sub Layanan Management (Master Data)
+    Route::get('/sublayanan', [SubLayananController::class, 'index'])->name('sublayanan.index');
+    Route::post('/sublayanan', [SubLayananController::class, 'store'])->name('sublayanan.store');
+    Route::put('/sublayanan/{id}', [SubLayananController::class, 'update'])->name('sublayanan.update');
+    Route::delete('/sublayanan/{id}', [SubLayananController::class, 'destroy'])->name('sublayanan.destroy');
+     
+    // Provinsi Management
+    Route::get('/provinsi', [ProvinsiController::class, 'index'])->name('provinsi.index');
+    Route::post('/provinsi', [ProvinsiController::class, 'store'])->name('provinsi.store');
+    Route::put('/provinsi/{kode}', [ProvinsiController::class, 'update'])->name('provinsi.update');
+    Route::delete('/provinsi/{kode}', [ProvinsiController::class, 'destroy'])->name('provinsi.destroy');
+    
+    // Kota Management
+    Route::resource('kota', KotaController::class);
+    
+    // Kecamatan Management
+    Route::resource('kecamatan', KecamatanController::class);
+    
+    // Kelurahan Management ← TAMBAHKAN INI
+    Route::resource('kelurahan', KelurahanController::class);
     
     // Slider Management
     Route::resource('slider', SliderController::class);
@@ -91,6 +117,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     // Satuan Management (Master Data)
     Route::resource('satuan', SatuanController::class);
 
+    // Hama Management
     Route::resource('hama', HamaController::class);
     
 });
