@@ -68,49 +68,66 @@
         }
 
         .sidebar-logo {
-            width: 60px;
-            height: 60px;
-            background: var(--hover-color);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 10px;
-            font-size: 28px;
+            margin: 0 auto 15px;
+            font-size: 32px;
             color: white;
+            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(26, 188, 156, 0.6);
         }
 
         .sidebar-title {
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             margin: 0;
             white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            margin-top: 5px;
         }
 
         /* User Profile */
         .user-profile {
-            padding: 15px;
+            padding: 20px 15px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
         }
 
         .user-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background: var(--hover-color);
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 10px;
+            margin: 0 auto 12px;
             color: white;
-            font-size: 20px;
+            font-size: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .user-name {
             color: white;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             margin: 0;
         }
@@ -119,6 +136,11 @@
             color: var(--text-light);
             font-size: 12px;
             opacity: 0.8;
+            background: rgba(26, 188, 156, 0.2);
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            margin-top: 8px;
         }
 
         /* Navigation Menu */
@@ -130,7 +152,7 @@
             color: rgba(255, 255, 255, 0.5);
             font-size: 11px;
             text-transform: uppercase;
-            padding: 15px 20px 5px;
+            padding: 15px 20px 8px;
             font-weight: 600;
             letter-spacing: 1px;
         }
@@ -145,8 +167,22 @@
             padding: 12px 15px;
             color: var(--text-light);
             text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--hover-color);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
         }
 
         .nav-link:hover {
@@ -155,15 +191,23 @@
             transform: translateX(5px);
         }
 
+        .nav-link:hover::before {
+            transform: scaleY(1);
+        }
+
         .nav-link.active {
-            background: var(--hover-color);
+            background: linear-gradient(135deg, rgba(26, 188, 156, 0.9) 0%, rgba(22, 160, 133, 0.9) 100%);
             color: white;
-            box-shadow: 0 3px 10px rgba(26, 188, 156, 0.3);
+            box-shadow: 0 4px 15px rgba(26, 188, 156, 0.3);
+        }
+
+        .nav-link.active::before {
+            transform: scaleY(1);
         }
 
         .nav-link i {
             font-size: 18px;
-            min-width: 25px;
+            min-width: 30px;
             text-align: center;
             margin-right: 12px;
         }
@@ -171,6 +215,18 @@
         .nav-text {
             font-size: 14px;
             white-space: nowrap;
+            font-weight: 500;
+        }
+
+        /* Logout button special style */
+        .nav-link.logout {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+        }
+
+        .nav-link.logout:hover {
+            background: rgba(231, 76, 60, 0.2);
+            color: #c0392b;
         }
 
         /* Main Content */
@@ -232,6 +288,7 @@
             font-size: 10px;
             padding: 2px 6px;
             border-radius: 10px;
+            font-weight: 600;
         }
 
         .user-dropdown {
@@ -247,13 +304,14 @@
 
         .user-dropdown:hover {
             background: #e9ecef;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
 
         .user-dropdown-avatar {
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            background: var(--hover-color);
+            background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -298,19 +356,27 @@
             }
 
             .mobile-toggle {
-                display: block !important;
+                display: flex !important;
                 position: fixed;
                 top: 20px;
                 left: 20px;
                 z-index: 1001;
-                background: var(--primary-color);
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
                 border: none;
                 color: white;
-                width: 40px;
-                height: 40px;
-                border-radius: 8px;
-                font-size: 18px;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                width: 50px;
+                height: 50px;
+                border-radius: 12px;
+                font-size: 20px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+            }
+
+            .mobile-toggle:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
             }
 
             .mobile-overlay {
@@ -350,17 +416,18 @@
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
-                <i class="fas fa-building"></i>
+                <i class="fas fa-shield-alt"></i>
             </div>
             <h5 class="sidebar-title">Anugerah Pasim</h5>
+            <p class="sidebar-subtitle">Pest Control Management</p>
         </div>
 
         <div class="user-profile">
             <div class="user-avatar">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-user-shield"></i>
             </div>
             <p class="user-name">{{ Auth::user()->name }}</p>
-            <p class="user-role">Administrator</p>
+            <span class="user-role"><i class="fas fa-crown me-1"></i>Administrator</span>
         </div>
 
         <nav class="sidebar-nav">
@@ -379,7 +446,7 @@
             <div class="nav-item">
                 <a href="{{ route('admin.users.index') }}"
                     class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-users-cog"></i>
                     <span class="nav-text">Users</span>
                 </a>
             </div>
@@ -397,6 +464,58 @@
                     class="nav-link {{ request()->routeIs('admin.client.*') ? 'active' : '' }}">
                     <i class="fas fa-user-tie"></i>
                     <span class="nav-text">Master Client</span>
+                </a>
+            </div>
+
+            <div class="nav-section-title">LAYANAN</div>
+
+            <div class="nav-item">
+                <a href="{{ route('admin.jenis-layanan.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.jenis-layanan.*') ? 'active' : '' }}">
+                    <i class="fas fa-th-list"></i>
+                    <span class="nav-text">Jenis Layanan</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
+                <a href="{{ route('admin.sublayanan.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.sublayanan.*') ? 'active' : '' }}">
+                    <i class="fas fa-list-ul"></i>
+                    <span class="nav-text">Sub Layanan</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
+                <a href="{{ route('admin.hama.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.hama.*') ? 'active' : '' }}">
+                    <i class="fas fa-bug"></i>
+                    <span class="nav-text">Hama</span>
+                </a>
+            </div>
+
+            <div class="nav-section-title">PERALATAN</div>
+
+            <div class="nav-item">
+                <a href="{{ route('admin.kategori-alat.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.kategori_alat.*') ? 'active' : '' }}">
+                    <i class="fas fa-tags"></i>
+                    <span class="nav-text">Kategori Alat</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
+                <a href="{{ route('admin.alat.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.alat.*') ? 'active' : '' }}">
+                    <i class="fas fa-toolbox"></i>
+                    <span class="nav-text">Alat</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
+                <a href="{{ route('admin.satuan.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.satuan.*') ? 'active' : '' }}">
+                    <i class="fas fa-balance-scale"></i>
+                    <span class="nav-text">Satuan</span>
                 </a>
             </div>
 
@@ -421,7 +540,7 @@
             <div class="nav-item">
                 <a href="{{ route('admin.logo-client.index') }}"
                     class="nav-link {{ request()->routeIs('admin.logo-client.*') ? 'active' : '' }}">
-                    <i class="fas fa-image"></i>
+                    <i class="fas fa-file-image"></i>
                     <span class="nav-text">Logo Client</span>
                 </a>
             </div>
@@ -429,48 +548,41 @@
             <div class="nav-item">
                 <a href="{{ route('admin.layanan-client.index') }}"
                     class="nav-link {{ request()->routeIs('admin.layanan-client.*') ? 'active' : '' }}">
-                    <i class="fas fa-briefcase"></i>
+                    <i class="fas fa-handshake"></i>
                     <span class="nav-text">Layanan Client</span>
                 </a>
             </div>
 
+            <div class="nav-section-title">WILAYAH</div>
+
             <div class="nav-item">
-                <a href="{{ route('admin.jenis-layanan.index') }}"
-                    class="nav-link {{ request()->routeIs('admin.jenis-layanan.*') ? 'active' : '' }}">
-                    <i class="fas fa-briefcase"></i>
-                    <span class="nav-text">Jenis Layanan</span>
+                <a href="{{ route('admin.provinsi.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.provinsi.*') ? 'active' : '' }}">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="nav-text">Provinsi</span>
                 </a>
             </div>
 
             <div class="nav-item">
-                <a href="{{ route('admin.kategori-alat.index') }}"
-                    class="nav-link {{ request()->routeIs('admin.kategori_alat.*') ? 'active' : '' }}">
-                    <i class="fas fa-briefcase"></i>
-                    <span class="nav-text">Kategori Alat</span>
+                <a href="{{ route('admin.kecamatan.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.kecamatan.*') ? 'active' : '' }}">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="nav-text">Kecamatan</span>
                 </a>
             </div>
 
             <div class="nav-item">
-                <a href="{{ route('admin.alat.index') }}"
-                    class="nav-link {{ request()->routeIs('admin.alat.*') ? 'active' : '' }}">
-                    <i class="fas fa-briefcase"></i>
-                    <span class="nav-text">Alat</span>
+                <a href="#"
+                    class="nav-link {{ request()->routeIs('admin.kota.*') ? 'active' : '' }}">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="nav-text">Kota</span>
                 </a>
             </div>
-
             <div class="nav-item">
-                <a href="{{ route('admin.satuan.index') }}"
-                    class="nav-link {{ request()->routeIs('admin.satuan.*') ? 'active' : '' }}">
-                    <i class="fas fa-briefcase"></i>
-                    <span class="nav-text">Satuan</span>
-                </a>
-            </div>
-
-            <div class="nav-item">
-                <a href="{{ route('admin.hama.index') }}"
-                    class="nav-link {{ request()->routeIs('admin.hama.*') ? 'active' : '' }}">
-                    <i class="fas fa-briefcase"></i>
-                    <span class="nav-text">Hama</span>
+                <a href="#"
+                    class="nav-link {{ request()->routeIs('admin.kelurahan.*') ? 'active' : '' }}">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="nav-text">Kelurahan</span>
                 </a>
             </div>
 
@@ -478,7 +590,7 @@
 
             <div class="nav-item">
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                    class="nav-link">
+                    class="nav-link logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="nav-text">Logout</span>
                 </a>
