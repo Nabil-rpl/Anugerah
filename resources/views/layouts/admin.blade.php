@@ -564,24 +564,25 @@
             </div>
 
             <div class="nav-item">
+                <a href="{{ route('admin.kota.index') }}"
+                    class="nav-link {{ request()->routeIs('admin.kota.*') ? 'active' : '' }}">
+                    <i class="fas fa-city"></i>
+                    <span class="nav-text">Kota</span>
+                </a>
+            </div>
+
+            <div class="nav-item">
                 <a href="{{ route('admin.kecamatan.index') }}"
                     class="nav-link {{ request()->routeIs('admin.kecamatan.*') ? 'active' : '' }}">
-                    <i class="fas fa-map-marked-alt"></i>
+                    <i class="fas fa-map-marker-alt"></i>
                     <span class="nav-text">Kecamatan</span>
                 </a>
             </div>
 
             <div class="nav-item">
-                <a href="#"
-                    class="nav-link {{ request()->routeIs('admin.kota.*') ? 'active' : '' }}">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <span class="nav-text">Kota</span>
-                </a>
-            </div>
-            <div class="nav-item">
-                <a href="#"
+                <a href="{{ route('admin.kelurahan.index') }}"
                     class="nav-link {{ request()->routeIs('admin.kelurahan.*') ? 'active' : '' }}">
-                    <i class="fas fa-map-marked-alt"></i>
+                    <i class="fas fa-map-pin"></i>
                     <span class="nav-text">Kelurahan</span>
                 </a>
             </div>
