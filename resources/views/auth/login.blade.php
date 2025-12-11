@@ -13,95 +13,106 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            overflow: hidden;
+        }
+
+        .login-wrapper {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            animation: fadeInScale 0.6s ease;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .login-left {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9));
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden;
         }
 
-        body::before {
+        .login-left::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(26, 188, 156, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.2) 0%, transparent 70%);
+            animation: rotateGlow 15s linear infinite;
         }
 
-        @keyframes rotate {
+        @keyframes rotateGlow {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        .login-container {
-            background: rgba(44, 62, 80, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            max-width: 400px;
+        .brand-image {
             width: 100%;
-            animation: slideUp 0.5s ease;
+            max-width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             position: relative;
             z-index: 1;
+            animation: float 3s ease-in-out infinite;
+            object-fit: cover;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .login-right {
+            flex: 1;
+            padding: 80px 60px;
+            background: rgba(30, 60, 114, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .login-header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            padding: 40px 30px;
-            text-align: center;
-            border-bottom: 3px solid #1abc9c;
-        }
-
-        .logo-circle {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: 0 8px 20px rgba(26, 188, 156, 0.4);
-        }
-
-        .logo-circle svg {
-            width: 40px;
-            height: 40px;
-            fill: white;
+            margin-bottom: 40px;
         }
 
         .login-header h1 {
             color: white;
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
         }
 
         .login-header p {
-            color: #95a5a6;
-            font-size: 14px;
-        }
-
-        .login-form {
-            padding: 40px 30px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
         }
 
         .form-group {
@@ -110,7 +121,7 @@
 
         label {
             display: block;
-            color: #bdc3c7;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 14px;
             font-weight: 500;
             margin-bottom: 8px;
@@ -118,56 +129,67 @@
             letter-spacing: 0.5px;
         }
 
-        .input-wrapper {
-            position: relative;
-        }
-
         input[type="email"],
         input[type="password"] {
             width: 100%;
-            padding: 14px 16px;
-            background: #34495e;
-            border: 2px solid #34495e;
-            border-radius: 10px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
             color: white;
-            font-size: 15px;
+            font-size: 16px;
             transition: all 0.3s ease;
             outline: none;
         }
 
         input[type="email"]:focus,
         input[type="password"]:focus {
-            border-color: #1abc9c;
-            background: #3d5567;
-            box-shadow: 0 0 0 4px rgba(26, 188, 156, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(52, 152, 219, 0.8);
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
         }
 
         input::placeholder {
-            color: #7f8c8d;
+            color: rgba(255, 255, 255, 0.5);
         }
 
         .btn-login {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+            padding: 18px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 10px;
-            box-shadow: 0 6px 20px rgba(26, 188, 156, 0.3);
+            margin-top: 15px;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
             position: relative;
             overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-login::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-login:hover::before {
+            left: 100%;
         }
 
         .btn-login:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(26, 188, 156, 0.4);
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.5);
         }
 
         .btn-login:active:not(:disabled) {
@@ -185,8 +207,8 @@
 
         .btn-login .spinner {
             display: inline-block;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-top-color: white;
             border-radius: 50%;
@@ -205,12 +227,28 @@
             to { transform: rotate(360deg); }
         }
 
+        .forgot-password {
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        .forgot-password a {
+            color: rgba(52, 152, 219, 1);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password a:hover {
+            color: rgba(52, 152, 219, 0.8);
+        }
+
         .error-message {
-            background: rgba(231, 76, 60, 0.1);
+            background: rgba(231, 76, 60, 0.2);
             border-left: 4px solid #e74c3c;
-            color: #e74c3c;
-            padding: 12px 15px;
-            border-radius: 8px;
+            color: #fff;
+            padding: 14px 18px;
+            border-radius: 10px;
             margin-top: 20px;
             font-size: 14px;
             animation: shake 0.5s ease;
@@ -218,82 +256,89 @@
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
         }
 
-        .forgot-password {
-            text-align: right;
-            margin-top: 15px;
-        }
+        @media (max-width: 968px) {
+            .login-wrapper {
+                flex-direction: column;
+            }
 
-        .forgot-password a {
-            color: #1abc9c;
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.3s ease;
-        }
+            .login-left {
+                padding: 40px 30px;
+            }
 
-        .forgot-password a:hover {
-            color: #16a085;
+            .brand-image {
+                max-width: 300px;
+            }
+
+            .login-right {
+                padding: 50px 30px;
+            }
+
+            .login-header h1 {
+                font-size: 28px;
+            }
         }
 
         @media (max-width: 480px) {
-            .login-container {
+            .login-wrapper {
                 margin: 10px;
             }
 
-            .login-header {
+            .login-left {
                 padding: 30px 20px;
             }
 
-            .login-form {
-                padding: 30px 20px;
+            .login-right {
+                padding: 40px 20px;
+            }
+
+            .login-header h1 {
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-header">
-            <div class="logo-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.5l6 6V18h-2v-6H8v6H6v-6.5l6-6z"/>
-                </svg>
-            </div>
-            <h1>Anugerah Pasim</h1>
-            <p>Silakan login untuk melanjutkan</p>
+    <div class="login-wrapper">
+        <div class="login-left">
+            <img src="{{ asset('images/robot.png') }}" 
+                 alt="Anugerah Pasim" 
+                 class="brand-image">
         </div>
 
-        <div class="login-form">
+        <div class="login-right">
+            <div class="login-header">
+                <h1>Anugerah Pasim</h1>
+                <p>Silakan login untuk melanjutkan</p>
+            </div>
+
             <form action="{{ route('login.process') }}" method="POST" id="loginForm">
                 @csrf
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <div class="input-wrapper">
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            placeholder="nama@example.com"
-                            required
-                            autofocus
-                        >
-                    </div>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="nama@example.com"
+                        required
+                        autofocus
+                    >
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <div class="input-wrapper">
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            placeholder="••••••••"
-                            required
-                        >
-                    </div>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="••••••••"
+                        required
+                    >
                 </div>
 
                 <button type="submit" class="btn-login" id="loginBtn">
